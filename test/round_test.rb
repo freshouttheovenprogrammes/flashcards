@@ -3,7 +3,6 @@ require_relative '../lib/round'
 require_relative '../lib/card'
 require_relative '../lib/deck'
 require_relative '../lib/guess'
-require_relative '../lib/control_module'
 
 class RoundTest < Minitest::Test
 
@@ -71,9 +70,10 @@ class RoundTest < Minitest::Test
 
     assert_equal 1, round.guesses.count
     assert_equal "Correct!", round.guesses.first.feedback
+
+
     round.record_guess("93,000,000")
     assert_equal 2, round.guesses.count
-    binding.pry
     assert_equal 2, round.number_correct
   end
 

@@ -31,7 +31,6 @@ class Round
   end
 
   def number_correct
-    # binding.pry
     self.number_correct_counter
     return @correct
   end

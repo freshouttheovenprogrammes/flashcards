@@ -1,6 +1,5 @@
 require_relative 'round'
 require_relative 'card'
-require_relative 'control_module'
 require 'pry'
 
 class Guess
