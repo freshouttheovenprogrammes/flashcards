@@ -19,20 +19,20 @@ class Round
     guess = Guess.new(current_card, response)
     # we instantiate guess which is the current_card and the response
     @guesses.push(guess)
+    if guesses.count >= 1
     # now we are adding that to the guesses array
-    if guesses.count > 1
       # so after we've moved past the first card, it should add_current
-      add_current
       # current card changes after one has been pushed into the array
+      add_current
     end
   end
 
   def current_card
-    deck.cards[@current]
+    deck.cards[current]
   end
 
   def number_correct_counter
-    if self.current_card.answer == self.guesses[current].response
+    if current_card.answer == guesses[current].response
     add_correct
     end
   end

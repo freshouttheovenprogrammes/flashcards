@@ -78,7 +78,6 @@ class RoundTest < Minitest::Test
     card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
-    binding.pry
 
     round.record_guess("Juneau")
 
@@ -88,6 +87,7 @@ class RoundTest < Minitest::Test
 
     round.record_guess("93,000,000")
     assert_equal 2, round.guesses.count
+    binding.pry
     assert_equal 2, round.number_correct
   end
 
