@@ -74,6 +74,7 @@ class RoundTest < Minitest::Test
 
     round.record_guess("93,000,000")
     assert_equal 2, round.guesses.count
+    binding.pry
     assert_equal 2, round.number_correct
   end
 
