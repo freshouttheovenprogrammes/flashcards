@@ -3,7 +3,7 @@ require_relative 'card'
 require_relative 'control_module'
 require 'pry'
 
-class Guess 
+class Guess
 
   include Control
 
@@ -19,14 +19,13 @@ class Guess
   end
 
   def feedback
-    binding.pry
     if correct?
-      add_correct
+      # add_correct
       "Correct!"
     else
       "Failure"
     end
-    add_current
+    # add_current
   end
 
 end

@@ -21,6 +21,7 @@ class Round
   def record_guess(response)
     guess = Guess.new(current_card, response)
     @guesses.push(guess)
+    add_current
   end
 
   def current_card
@@ -29,14 +30,24 @@ class Round
 
   def number_correct_counter
     if self.current_card.answer == self.guesses[current].response
-      add_correct
+    add_correct
     end
   end
 
   def number_correct
+    # binding.pry
     self.number_correct_counter
     return @correct
   end
+
+  def add_current
+    @current += 1
+  end
+
+  def add_correct
+    @correct += 1
+  end
+
 
 end
 
