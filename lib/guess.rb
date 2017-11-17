@@ -1,6 +1,10 @@
 require_relative 'card'
+require_relative 'round'
+require_relative 'control_module'
 
 class Guess
+
+  include Control
 
   attr_reader :card, :response
 
@@ -15,10 +19,12 @@ class Guess
 
   def feedback
     if correct?
+      add_correct
       "Correct!"
     else
       "Failure"
     end
+    add_current
   end
 
 end

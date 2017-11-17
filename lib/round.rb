@@ -3,6 +3,8 @@ require_relative 'guess'
 
 class Round
 
+  include Control
+
   attr_reader :deck, :guesses
   attr_accessor :current, :correct
 
@@ -16,14 +18,6 @@ class Round
   def record_guess(response)
     guess = Guess.new(current_card, response)
     @guesses.push(guess)
-  end
-
-  def add_current
-    @current += 1
-  end
-
-  def add_correct
-    @correct += 1
   end
 
   def current_card
