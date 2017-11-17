@@ -15,10 +15,15 @@ class Round
   end
 
   def record_guess(response)
+    # takes argument of a response
     guess = Guess.new(current_card, response)
+    # we instantiate guess which is the current_card and the response
     @guesses.push(guess)
+    # now we are adding that to the guesses array
     if guesses.count > 1
+      # so after we've moved past the first card, it should add_current
       add_current
+      # current card changes after one has been pushed into the array
     end
   end
 
@@ -29,7 +34,6 @@ class Round
   def number_correct_counter
     if self.current_card.answer == self.guesses[current].response
     add_correct
-
     end
   end
 
