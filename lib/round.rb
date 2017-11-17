@@ -1,5 +1,6 @@
 require_relative 'deck'
 require_relative 'guess'
+require 'pry'
 
 class Round
 
@@ -15,6 +16,8 @@ class Round
     @correct = 0
   end
 
+
+
   def record_guess(response)
     guess = Guess.new(current_card, response)
     @guesses.push(guess)
@@ -26,8 +29,8 @@ class Round
 
   def number_correct_counter
     if self.current_card.answer == self.guesses[current].response
+      add_correct
     end
-    add_correct
   end
 
   def number_correct

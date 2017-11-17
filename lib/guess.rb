@@ -1,8 +1,9 @@
-require_relative 'card'
 require_relative 'round'
+require_relative 'card'
 require_relative 'control_module'
+require 'pry'
 
-class Guess
+class Guess 
 
   include Control
 
@@ -18,6 +19,7 @@ class Guess
   end
 
   def feedback
+    binding.pry
     if correct?
       add_correct
       "Correct!"
