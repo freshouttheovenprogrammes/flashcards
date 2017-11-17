@@ -4,8 +4,6 @@ require 'pry'
 
 class Round
 
-  include Control
-
   attr_reader :deck, :guesses
   attr_accessor :current, :correct
 
@@ -15,8 +13,6 @@ class Round
     @current = 0
     @correct = 0
   end
-
-
 
   def record_guess(response)
     guess = Guess.new(current_card, response)

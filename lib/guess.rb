@@ -5,8 +5,6 @@ require 'pry'
 
 class Guess
 
-  include Control
-
   attr_reader :card, :response
 
   def initialize(card, response)
@@ -20,12 +18,10 @@ class Guess
 
   def feedback
     if correct?
-      # add_correct
       "Correct!"
     else
       "Failure"
     end
-    # add_current
   end
 
 end
