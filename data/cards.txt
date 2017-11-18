@@ -1,0 +1,7 @@
+question, answer
+What is the capital of Alaska?, Juneau
+Whose the best dad ever?, eric
+What is 5 + 5?, 10
+What is 5 + 6?, 11
+What is 5 + 7?, 12
+What is 5 + 8?, 13

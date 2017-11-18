@@ -96,9 +96,9 @@ class RoundTest < Minitest::Test
     round.record_guess("Yuneau")
 
     assert_equal "Incorrect", round.guesses.first.feedback
-
+    
     round.record_guess("93,000,000")
-    assert_equal 50, round.percent_correct
+    assert_equal 50.0, round.percent_correct
   end
 
 end

@@ -23,6 +23,22 @@ class Round
     add_current
   end
 
+  def start
+    puts "Welcome! You're playing with #{deck.count} cards."
+    puts "-------------------------------------------------"
+  end
+
+  def play
+    deck.count.times do
+        puts current_card.question
+        input = gets.chomp
+        record_guess(input)
+        puts guesses[current-1].feedback
+    end
+    puts "∆∆∆∆∆ Game over! ∆∆∆∆∆"
+    puts "You got #{correct} correct out of #{deck.count}" +
+         " for a total score of #{percent_correct}%"
+  end
 
   def current_card
     deck.cards[current]
@@ -33,7 +49,7 @@ class Round
   end
 
   def percent_correct
-    return (@correct.to_f / guesses.count.to_f) ** 100
+    return (@correct.to_f / guesses.count.to_f * 100.0).round(2)
   end
 
   def add_current
@@ -50,18 +66,3 @@ class Round
 
 
 end
-
-=begin
-round.current_card
-=> #<Card:0x007ffdf1820a90 @answer="93,000,000", @question="Approximately how many miles are in one astronomical unit?">
-round.record_guess("2")
-=> #<Guess:0x007ffdf19c8a00 @card=#<Card:0x007ffdf1820a90 @answer="93,000,000", @question="Approximately how many miles are in one astronomical unit?">, @response="2">
-round.guesses.count
-=> 2
-round.guesses.last.feedback
-=> "Incorrect."
-round.number_correct
-=> 1
-round.percent_correct
-=> 50
-=end
