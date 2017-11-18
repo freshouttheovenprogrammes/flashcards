@@ -16,17 +16,7 @@ round.start
 round.play
 end
 
-class CardGenerator
 
-  attr_reader :filename
-
-  def initialize(filename)
-    @filename = "data/cards.txt"
-  end
-
-  filename = File.open(ARGV[0], 'r').read.chomp
-
-end
 
 =begin
 Inside of this file, write the code to do the following:
