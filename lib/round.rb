@@ -19,34 +19,44 @@ class Round
     guess = Guess.new(current_card, response)
     # we instantiate guess which is the current_card and the response
     @guesses.push(guess)
-    if guesses.count >= 1
     # now we are adding that to the guesses array
-      # so after we've moved past the first card, it should add_current
-      # current card changes after one has been pushed into the array
+    # so after we've moved past the first card, it should add_current
+    # current card changes after one has been pushed into the array
+    if guesses.count >= 1
+      # did this so that it wouldn't immediately add the card. before I was
+      # getting the first card object twice in the guesses array.
+      # a lot depends on the @current attribute. it defines current_card
+      # which then I can define the correct answer to.
       add_current
     end
   end
 
   def current_card
+    # pulls into the deck and uses the @current to define which indicies to use
     deck.cards[current]
   end
 
   def number_correct_counter
+    # this method is broken!!!! need to figure this out most importantly.
     if current_card.answer == guesses[current].response
     add_correct
     end
   end
 
   def number_correct
+    # just returns the amt. I would have made it differently but the schools
+    # spec is pretty specific on the requirements for this method.
     self.number_correct_counter
     return @correct
   end
 
   def add_current
+    # this is the adder method for current.
     @current += 1
   end
 
   def add_correct
+    # this is the adder method for correct.
     @correct += 1
   end
 
