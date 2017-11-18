@@ -1,4 +1,6 @@
+require_relative 'round'
 require_relative 'card'
+require 'pry'
 
 class Guess
 
@@ -15,9 +17,9 @@ class Guess
 
   def feedback
     if correct?
-      "Correct!"
+      "Correct"
     else
-      "Failure"
+      "Incorrect"
     end
   end
 
