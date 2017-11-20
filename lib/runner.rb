@@ -11,7 +11,8 @@ round = Round.new(deck)
 
 
 generator = CardGenerator.new(filename)
-generator.load(filename, deck)
+generator.load(deck)
+# generator.file_check
 round.start
 round.play
 end
