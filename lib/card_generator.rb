@@ -1,4 +1,4 @@
-# require_relative '../data/cards.txt'
+require 'pry'
 
 class CardGenerator
 
@@ -9,9 +9,9 @@ class CardGenerator
   end
 
   def load(filename, deck)
-    data = CSV.read(filename, headers: true, header_converters: :symbol)
-     data.map do |row|
-       deck.cards << Card.new(:question, :answer)
+    data = CSV.readlines(filename, headers: true, header_converters: :symbol)
+     data.each do |row|
+       deck.cards << Card.new(row[:question], row[:answer].lstrip)
      end
   end
 

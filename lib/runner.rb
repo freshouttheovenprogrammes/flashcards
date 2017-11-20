@@ -1,6 +1,7 @@
 require_relative 'card_generator'
 require_relative 'round'
 require 'csv'
+require 'pry'
 
 class Runner
 filename = ARGV[0]

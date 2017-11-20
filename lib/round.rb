@@ -29,9 +29,10 @@ class Round
   end
 
   def play
-    deck.count.times do
+    deck.cards.count.times do
         puts current_card.question
-        input = gets.chomp
+        input = $stdin.gets.chomp
+        # had to use $stdin to let input hit
         record_guess(input)
         puts guesses[current-1].feedback
     end
