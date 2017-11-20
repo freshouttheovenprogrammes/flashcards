@@ -15,6 +15,9 @@ class CardGenerator
   end
 
   def file_check
+    if @filename == ""
+      @filename = "data/cards.txt"
+    end
     until File.exist?(@filename) == true
       puts "Please try another filename"
       @filename = $stdin.gets.chomp
