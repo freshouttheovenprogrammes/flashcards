@@ -4,7 +4,7 @@ require 'pry'
 
 class Round
 
-  attr_reader :deck, :guesses
+  attr_reader :deck, :guesses, :input
   attr_accessor :current, :correct
 
   def initialize(deck)
@@ -12,6 +12,7 @@ class Round
     @guesses   = []
     @current   = 0
     @correct   = 0
+    @input     = $stdin.gets.chomp.downcase
   end
 
   def record_guess(response)
@@ -31,15 +32,16 @@ class Round
   def play
     deck.cards.count.times do
         puts current_card.question
-        input = $stdin.gets.chomp.downcase
-        binding.pry
-        if input == "hint" || "Hint"
-          puts current_card.hints.lstrip
-          $stdin.gets.chomp.downcase
+        input
+        hint
+        # binding.pry
+        # if input == "hint" || "Hint"
+        #   puts current_card.hints.lstrip
+        #   $stdin.gets.chomp.downcase
           puts guesses[current].feedback
         record_guess(input)
         puts guesses[current-1].feedback
-        end
+        # end
     end
     puts "∆∆∆∆∆ Game over! ∆∆∆∆∆"
     puts "You got #{correct} correct out of #{deck.count}" +
@@ -47,7 +49,11 @@ class Round
   end
 
   def hint
-    # make method in here?
+    if input == "hint" || input == "Hint"
+      puts current_card.hints.lstrip
+      input
+      puts guesses[current].feedback
+    end
   end
 
   def current_card
