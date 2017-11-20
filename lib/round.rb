@@ -31,7 +31,7 @@ class Round
   def play
     deck.cards.count.times do
         puts current_card.question
-        input = $stdin.gets.chomp
+        input = $stdin.gets.chomp.downcase
         # had to use $stdin to let input hit
         record_guess(input)
         puts guesses[current-1].feedback
