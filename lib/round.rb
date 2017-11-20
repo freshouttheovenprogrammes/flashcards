@@ -32,17 +32,21 @@ class Round
     deck.cards.count.times do
         puts current_card.question
         input = $stdin.gets.chomp.downcase
-          if input == "hint"
-            puts current_card.hints.lstrip
-            $stdin.gets.chomp.downcase
-            puts guesses[current].feedback
-          else record_guess(input)
-          puts guesses[current-1].feedback
-          end
+        if input == "hint"
+          puts current_card.hints.lstrip
+          $stdin.gets.chomp.downcase
+          puts guesses[current].feedback
+        record_guess(input)
+        puts guesses[current-1].feedback
+        end
     end
     puts "∆∆∆∆∆ Game over! ∆∆∆∆∆"
     puts "You got #{correct} correct out of #{deck.count}" +
          " for a total score of #{percent_correct}%"
+  end
+
+  def hint
+    # make method in here?
   end
 
   def current_card
