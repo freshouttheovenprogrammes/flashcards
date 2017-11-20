@@ -1,7 +1,7 @@
-question, answer
-What is the capital of Alaska?, juneau
-Whose the best dad ever?, eric
-What is 5 + 5?, 10
-What is 5 + 6?, 11
-What is 5 + 7?, 12
-What is 5 + 8?, 13
+question, answer, hints
+What is the capital of Alaska?, juneau, you know?
+Approximately how many miles are in one astronomical unit?, 93,000,000, there are many
+What is 5 + 5?, 10, just add it
+What is 5 + 6?, 11, just add it
+What is 5 + 7?, 12, just add it
+What is 5 + 8?, 13, just add it

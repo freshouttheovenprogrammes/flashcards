@@ -9,8 +9,8 @@ class RoundTest < Minitest::Test
 
   def test_that_round_can_take_a_deck
 
-    card_1 = Card.new("What is the capital of Alaska?", "Juneau")
-    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
+    card_1 = Card.new("What is the capital of Alaska?", "Juneau", "you know")
+    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000", "there are many")
     my_deck = Deck.new([card_1, card_2])
     my_round = Round.new(my_deck)
 
@@ -19,8 +19,8 @@ class RoundTest < Minitest::Test
 
   def test_that_we_know_first_card_is_current
 
-    card_1 = Card.new("What is the capital of Alaska?", "Juneau")
-    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
+    card_1 = Card.new("What is the capital of Alaska?", "Juneau", "you know")
+    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000", "there are many")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
 
@@ -29,8 +29,8 @@ class RoundTest < Minitest::Test
 
   def test_that_guesses_are_recorded
 
-    card_1 = Card.new("What is the capital of Alaska?", "Juneau")
-    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
+    card_1 = Card.new("What is the capital of Alaska?", "Juneau", "you know")
+    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000", "there are many")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
 
@@ -44,30 +44,29 @@ class RoundTest < Minitest::Test
 
   def test_that_guesses_get_appropriate_feedback
 
-    card_1 = Card.new("What is the capital of Alaska?", "Juneau")
-    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
+    card_1 = Card.new("What is the capital of Alaska?", "Juneau", "you know")
+    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000", "there are many")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
 
     round.record_guess("Juneau")
 
     assert_equal 1, round.guesses.count
-    assert_equal "Correct!", round.guesses.first.feedback
+    assert_equal "Correct", round.guesses.first.feedback
 
     assert_equal 1, round.number_correct
   end
 
   def test_that_two_guesses_get_counted
-
-    card_1 = Card.new("What is the capital of Alaska?", "Juneau")
-    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
+    card_1 = Card.new("What is the capital of Alaska?", "Juneau", "you know")
+    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000", "there are many")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
 
     round.record_guess("Juneau")
 
     assert_equal 1, round.guesses.count
-    assert_equal "Correct!", round.guesses.first.feedback
+    assert_equal "Correct", round.guesses.first.feedback
     round.record_guess("93,000,000")
 
     assert_equal 2, round.guesses.count
