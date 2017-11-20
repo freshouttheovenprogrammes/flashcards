@@ -51,14 +51,15 @@ class RoundTest < Minitest::Test
 
     round.record_guess("Juneau")
 
+
     assert_equal 1, round.guesses.count
-    assert_equal "Correct!", round.guesses.first.feedback
+
+    assert_equal "Correct", round.guesses.first.feedback
 
     assert_equal 1, round.number_correct
   end
 
   def test_that_two_guesses_get_counted
-
     card_1 = Card.new("What is the capital of Alaska?", "Juneau")
     card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
     deck = Deck.new([card_1, card_2])
@@ -67,11 +68,37 @@ class RoundTest < Minitest::Test
     round.record_guess("Juneau")
 
     assert_equal 1, round.guesses.count
-    assert_equal "Correct!", round.guesses.first.feedback
     round.record_guess("93,000,000")
+    assert_equal 2, round.guesses.count
+  end
 
+  def test_that_two_guesses_get_counted_as_correct
+    card_1 = Card.new("What is the capital of Alaska?", "Juneau")
+    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
+    deck = Deck.new([card_1, card_2])
+    round = Round.new(deck)
+    round.record_guess("Juneau")
+
+    assert_equal 1, round.guesses.count
+    assert_equal "Correct", round.guesses.first.feedback
+
+
+    round.record_guess("93,000,000")
     assert_equal 2, round.guesses.count
     assert_equal 2, round.number_correct
+  end
+
+  def test_that_we_can_record_incorrect_guesses
+    card_1 = Card.new("What is the capital of Alaska?", "Juneau")
+    card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
+    deck = Deck.new([card_1, card_2])
+    round = Round.new(deck)
+    round.record_guess("Yuneau")
+
+    assert_equal "Incorrect", round.guesses.first.feedback
+    
+    round.record_guess("93,000,000")
+    assert_equal 50.0, round.percent_correct
   end
 
 end

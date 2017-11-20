@@ -2,8 +2,6 @@ require 'pry'
 
 class CardGenerator
 
-  # attr_reader :filename
-
   def initialize(filename)
     @filename = filename
     file_check
@@ -22,5 +20,5 @@ class CardGenerator
       @filename = $stdin.gets.chomp
     end
   end
-
+  
 end
