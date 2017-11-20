@@ -3,11 +3,6 @@ require_relative '../lib/card'
 
 class CardTest < Minitest::Test
 
-  def setup
-    c = Card.new
-  end
-  # this wasn't working like I thought it would
-
   def test_that_card_exists
     c = Card.new
     assert_instance_of Card, c

@@ -25,13 +25,14 @@ class Round
 
   def start
     puts "Welcome! You're playing with #{deck.count} cards."
-    puts "-------------------------------------------------"
+    puts "≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈"
   end
 
   def play
-    deck.count.times do
+    deck.cards.count.times do
         puts current_card.question
-        input = gets.chomp
+        input = $stdin.gets.chomp.downcase
+        # had to use $stdin to let input hit
         record_guess(input)
         puts guesses[current-1].feedback
     end
@@ -59,10 +60,5 @@ class Round
   def add_correct
     @correct += 1
   end
-
-  def add_incorrect
-    @incorrect += 1
-  end
-
 
 end

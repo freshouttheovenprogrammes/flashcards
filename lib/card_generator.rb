@@ -1,15 +1,23 @@
+require 'pry'
+
 class CardGenerator
 
-  attr_reader :filename
-
   def initialize(filename)
-    filename = "data/cards.txt"
+    @filename = filename
+    file_check
   end
 
-  def reader
-    filename = File.open(ARGV[0], 'r').read.chomp
-    filename.map do |row|
-      row
+  def load(deck)
+    data = CSV.readlines(@filename, headers: true, header_converters: :symbol)
+     data.each do |row|
+       deck.cards << Card.new(row[:question], row[:answer].lstrip)
+     end
+  end
+
+  def file_check
+    until File.exist?(@filename) == true
+      puts "Please try another filename"
+      @filename = $stdin.gets.chomp
     end
   end
   
