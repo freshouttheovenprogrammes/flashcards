@@ -2,8 +2,6 @@ require 'pry'
 
 class CardGenerator
 
-  # attr_reader :filename
-
   def initialize(filename)
     @filename = filename
     file_check
@@ -12,7 +10,7 @@ class CardGenerator
   def load(deck)
     data = CSV.readlines(@filename, headers: true, header_converters: :symbol)
      data.each do |row|
-       deck.cards << Card.new(row[:question], row[:answer].lstrip)
+       deck.cards << Card.new(row[:question], row[:answer].lstrip, row[:hints])
      end
   end
 

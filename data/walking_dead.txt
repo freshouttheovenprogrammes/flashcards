@@ -1,0 +1,3 @@
+question, answer, hints
+What is Rick Grimes's son's name?, coral, this is a hint
+Who is Rick Grimes's lover in season 7? , michonne, the ninja

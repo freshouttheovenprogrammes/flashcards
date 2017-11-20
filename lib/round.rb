@@ -32,9 +32,13 @@ class Round
     deck.cards.count.times do
         puts current_card.question
         input = $stdin.gets.chomp.downcase
-        # had to use $stdin to let input hit
-        record_guess(input)
-        puts guesses[current-1].feedback
+          if input == "hint"
+            puts current_card.hints.lstrip
+            $stdin.gets.chomp.downcase
+            puts guesses[current].feedback
+          else record_guess(input)
+          puts guesses[current-1].feedback
+          end
     end
     puts "∆∆∆∆∆ Game over! ∆∆∆∆∆"
     puts "You got #{correct} correct out of #{deck.count}" +
