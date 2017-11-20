@@ -31,10 +31,10 @@ class Round
 
   def play
     deck.cards.count.times do
+      binding.pry
         puts current_card.question
         input
-        hint
-        # binding.pry
+        # hint
         # if input == "hint" || "Hint"
         #   puts current_card.hints.lstrip
         #   $stdin.gets.chomp.downcase
