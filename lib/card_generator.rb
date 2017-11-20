@@ -1,16 +1,18 @@
+# require_relative '../data/cards.txt'
+
 class CardGenerator
 
   attr_reader :filename
 
-  def initialize(filename)
-    filename = "data/cards.txt"
+  def initialize(filename = "data/cards.txt")
+    @filename = filename
   end
 
-  def reader
-    filename = File.open(ARGV[0], 'r').read.chomp
-    filename.map do |row|
-      row
-    end
+  def load(filename, deck)
+    data = CSV.read(filename, headers: true, header_converters: :symbol)
+     data.map do |row|
+       deck.cards << Card.new(:question, :answer)
+     end
   end
-  
+
 end
